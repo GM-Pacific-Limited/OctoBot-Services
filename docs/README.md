@@ -1,85 +1,85 @@
-# OctoBot-Services Documentation
+# OctoBot-Services ドキュメント
 
-## Overview
-OctoBot-Services is a Python package that provides integration between OctoBot's core trading functionalities and various external services, communication channels, and user interfaces. It serves as the bridge between the trading bot and the outside world.
+## 概要
+OctoBot-Servicesは、OctoBotのコア取引機能と様々な外部サービス、通信チャネル、ユーザーインターフェースを統合するPythonパッケージです。取引ボットと外部世界の橋渡しとして機能します。
 
-The package enables OctoBot users to:
-- Receive notifications about trades, orders, and market conditions
-- Interact with the trading system through command-based interfaces (e.g., Telegram)
-- Use web interfaces for managing and monitoring the trading system
-- Connect to external data sources and platforms
-- Configure various services for enhanced functionality
+このパッケージは、OctoBotユーザーに以下の機能を提供します：
+- 取引、注文、市場状況に関する通知の受信
+- コマンドベースのインターフェース（例：Telegram）を通じた取引システムとの対話
+- 取引システムの管理と監視のためのWebインターフェースの使用
+- 外部データソースやプラットフォームへの接続
+- 機能強化のための様々なサービスの設定
 
-## Core Architecture
-The architecture of OctoBot-Services is based on several key abstractions:
+## コアアーキテクチャ
+OctoBot-Servicesのアーキテクチャは、いくつかの重要な抽象化に基づいています：
 
-### Services System
-- `AbstractService`: Base class for all services that defines the interface and common behaviors
-- `ServiceFactory`: Creates and manages service instances, ensuring singleton instances
-- `AbstractServiceUser`: Base class for components that require services
+### サービスシステム
+- `AbstractService`：インターフェースと共通の動作を定義するすべてのサービスの基本クラス
+- `ServiceFactory`：サービスインスタンスを作成・管理し、シングルトンインスタンスを確保
+- `AbstractServiceUser`：サービスを必要とするコンポーネントの基本クラス
 
-### Notification System
-- `AbstractNotifier`: Base class for sending notifications
-- Various notification types for different events (orders, trades, etc.)
-- `NotificationChannel`: Channel for distributing notifications to subscribers
+### 通知システム
+- `AbstractNotifier`：通知を送信するための基本クラス
+- 様々なイベント（注文、取引など）に対応する通知タイプ
+- `NotificationChannel`：購読者に通知を配信するためのチャネル
 
-### Interface System
-- `AbstractInterface`: Base class for all interfaces
-- `AbstractBotInterface`: Interface for command-based interaction
-- `AbstractWebInterface`: Interface for web-based interaction
+### インターフェースシステム
+- `AbstractInterface`：すべてのインターフェースの基本クラス
+- `AbstractBotInterface`：コマンドベースの対話のためのインターフェース
+- `AbstractWebInterface`：Webベースの対話のためのインターフェース
 
-### Service Feed System
-- `AbstractServiceFeed`: Base class for service feeds receiving data from external sources
-- `ServiceFeedFactory`: Creates service feed instances
-- `ServiceFeedManager`: Manages service feed lifecycle
+### サービスフィードシステム
+- `AbstractServiceFeed`：外部ソースからデータを受信するサービスフィードの基本クラス
+- `ServiceFeedFactory`：サービスフィードインスタンスを作成
+- `ServiceFeedManager`：サービスフィードのライフサイクルを管理
 
-## Directory Structure
+## ディレクトリ構造
 ```
 octobot_services/
-├── api/                  # API functions for external interaction
-├── channel/              # Communication channels
-├── interfaces/           # Interface implementations
-│   ├── bots/             # Bot interfaces
-│   ├── web/              # Web interfaces
-│   └── util/             # Interface utilities
-├── managers/             # Component managers
-├── notifier/             # Notification system
-├── notification/         # Notification implementations
-├── services/             # Service implementations
-├── service_feeds/        # Service feed implementations
-└── util/                 # Utility functions
+├── api/                  # 外部連携用のAPI関数
+├── channel/              # 通信チャネル
+├── interfaces/           # インターフェース実装
+│   ├── bots/             # ボットインターフェース
+│   ├── web/              # Webインターフェース
+│   └── util/             # インターフェースユーティリティ
+├── managers/             # コンポーネントマネージャー
+├── notifier/             # 通知システム
+├── notification/         # 通知実装
+├── services/             # サービス実装
+├── service_feeds/        # サービスフィード実装
+└── util/                 # ユーティリティ関数
 ```
 
-## Key Components
+## 主要コンポーネント
 
-### Services
-Services provide specific functionalities through standard interfaces. Some examples include:
-- Telegram service for communication
-- Web service for browser-based dashboards
-- Webhook service for external signals
+### サービス
+サービスは標準インターフェースを通じて特定の機能を提供します。例えば：
+- 通信用のTelegramサービス
+- ブラウザベースのダッシュボード用のWebサービス
+- 外部シグナル用のWebhookサービス
 
-### Notifiers
-Notifiers send information to users through various channels:
-- Email notifications
-- Telegram messages
-- Discord alerts
-- Custom notification channels
+### 通知機能
+通知機能は様々なチャネルを通じてユーザーに情報を送信します：
+- Eメール通知
+- Telegramメッセージ
+- Discordアラート
+- カスタム通知チャネル
 
-### Interfaces
-Interfaces allow users to interact with the OctoBot system:
-- Command-line interfaces
-- Bot-based interfaces (Telegram, Discord)
-- Web interfaces
+### インターフェース
+インターフェースはユーザーがOctoBotシステムと対話することを可能にします：
+- コマンドラインインターフェース
+- ボットベースのインターフェース（Telegram、Discord）
+- Webインターフェース
 
-### Service Feeds
-Service feeds bring external data into the OctoBot ecosystem:
-- TradingView signals
-- Social media feeds
-- Custom data sources
+### サービスフィード
+サービスフィードは外部データをOctoBot環境に取り込みます：
+- TradingViewシグナル
+- ソーシャルメディアフィード
+- カスタムデータソース
 
-## Usage Examples
+## 使用例
 
-### Creating a Service
+### サービスの作成
 ```python
 class MyCustomService(AbstractService):
     def get_type(self):
@@ -89,36 +89,36 @@ class MyCustomService(AbstractService):
         return "https://my-service-endpoint.com"
         
     async def prepare(self):
-        # Service initialization code
+        # サービス初期化コード
         pass
         
     def has_required_configuration(self):
         return all(key in self.config for key in self.get_required_config())
         
     def get_successful_startup_message(self):
-        return "My custom service successfully started!", True
+        return "カスタムサービスが正常に起動しました！", True
 ```
 
-### Using a Service
+### サービスの使用
 ```python
 class MyServiceUser(AbstractServiceUser):
     REQUIRED_SERVICES = [MyCustomService]
     
     def __init__(self, config):
         super().__init__(config)
-        # Initialization code
+        # 初期化コード
 ```
 
-## Configuration
-Services are configured through the OctoBot configuration system. Each service can specify:
-- Required configuration fields
-- Default values
-- Field descriptions
-- Read-only information
+## 設定
+サービスはOctoBot設定システムを通じて設定されます。各サービスは以下を指定できます：
+- 必須設定フィールド
+- デフォルト値
+- フィールドの説明
+- 読み取り専用情報
 ```
 services:
   my_service:
     enabled: true
-    api_key: "your-api-key-here"
-    secret: "your-secret-here"
+    api_key: "あなたのAPIキー"
+    secret: "あなたのシークレット"
 ```

@@ -1,33 +1,33 @@
-# OctoBot-Services Modules
+# OctoBot-Services モジュール
 
-## Services
-The `services` module provides the core service system:
-- `AbstractService`: Base class for all services
-- `ServiceFactory`: Creates and manages service instances
+## サービス
+`services`モジュールはコアサービスシステムを提供します：
+- `AbstractService`：すべてのサービスの基本クラス
+- `ServiceFactory`：サービスインスタンスの作成と管理
 
-## Notification
-The `notification` module handles the notification system:
-- `AbstractNotifier`: Base class for sending notifications
-- Various notification implementations for different events
+## 通知
+`notification`モジュールは通知システムを処理します：
+- `AbstractNotifier`：通知送信の基本クラス
+- 様々なイベント用の通知実装
 
-## Interfaces
-The `interfaces` module manages user interfaces:
-- `AbstractInterface`: Base class for all interfaces
-- `AbstractBotInterface`: For command-based interactions
-- `AbstractWebInterface`: For web-based interactions
+## インターフェース
+`interfaces`モジュールはユーザーインターフェースを管理します：
+- `AbstractInterface`：すべてのインターフェースの基本クラス
+- `AbstractBotInterface`：コマンドベースの対話用
+- `AbstractWebInterface`：Webベースの対話用
 
-## Service Feeds
-The `service_feeds` module handles external data sources:
-- `AbstractServiceFeed`: Base class for service feeds
-- `ServiceFeedFactory`: Creates service feed instances
+## サービスフィード
+`service_feeds`モジュールは外部データソースを処理します：
+- `AbstractServiceFeed`：サービスフィードの基本クラス
+- `ServiceFeedFactory`：サービスフィードインスタンスの作成
 
-## Managers
-The `managers` module provides component lifecycle management:
-- `ServiceManager`: Manages service lifecycle
-- `InterfaceManager`: Manages interface lifecycle
-- `ServiceFeedManager`: Manages service feed lifecycle
+## マネージャー
+`managers`モジュールはコンポーネントのライフサイクル管理を提供します：
+- `ServiceManager`：サービスのライフサイクル管理
+- `InterfaceManager`：インターフェースのライフサイクル管理
+- `ServiceFeedManager`：サービスフィードのライフサイクル管理
 
-## Channels
-The `channel` module implements the communication system:
-- `UserCommandsChannel`: For user command distribution
-- `NotificationChannel`: For notification distribution
+## チャネル
+`channel`モジュールは通信システムを実装します：
+- `UserCommandsChannel`：ユーザーコマンド配信用
+- `NotificationChannel`：通知配信用
